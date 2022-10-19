@@ -1,0 +1,48 @@
+:root {
+    --bg-color: hsl(49 37% 94%);
+    --time: 6s;
+    --character-count: 31;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    background: var(--bg-color);
+}
+
+h1 {
+    font-size: clamp(1rem, 3vw + 1rem, 4rem );
+    position: relative;
+    font-family: "Source Code Pro",monospace;
+    width: max-content;
+}
+
+h1::after,
+h1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+h1::before {
+    background: var(--bg-color);
+    animation: TypeWriter var(--time) steps(var(--character-count)) forwards;
+}
+
+h1::after {
+    width: .125em;
+    background: black;
+    animation: TypeWriter var(--time) steps(var(--character-count)) forwards;
+}
+
+@keyframes TypeWriter {
+    to {
+        left: 100%;
+    }
+}
